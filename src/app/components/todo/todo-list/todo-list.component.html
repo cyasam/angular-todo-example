@@ -1,0 +1,15 @@
+<ng-template [ngIf]="!loading && !error">
+  <ul class="todo-list list-group" *ngIf="todos.length">
+    <li class="list-group-item" *ngFor="let todo of todos">
+      <label for="todo-{{todo.id}}">
+        <input id="todo-{{todo.id}}" type="checkbox" [checked]="todo.completed" (input)="handleUpdateTodo(todo)" />
+        {{ todo.title }}
+      </label>
+      <button class="btn btn-primary btn-sm" (click)="handleDeleteTodo(todo)">Delete</button>
+    </li>
+  </ul>
+
+  <div *ngIf="!todos.length">
+    No todos found...
+  </div>
+</ng-template>
