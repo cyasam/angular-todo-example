@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
 import { TodoService } from './services/todo.service';
 import { TodoModel } from './models/todo.interface';
 
@@ -13,17 +12,8 @@ export class AppComponent {
   error: Object;
   todos: TodoModel[] = [];
   loading: boolean = false;
-  newTodo: TodoModel = {
-    id: null,
-    title: '',
-    completed: false
-  };
 
-  newTodoForm: FormGroup = this.fb.group({
-    title: ''
-  })
-
-  constructor(private todoService: TodoService, private fb: FormBuilder){}
+  constructor(private todoService: TodoService){}
 
   ngOnInit(): void {
     this.getTodos();
@@ -31,11 +21,6 @@ export class AppComponent {
 
   reloadList() {
     this.getTodos();
-  }
-
-  handleSubmit() {
-    this.newTodo.title = this.newTodoForm.value.title;
-    this.addTodo(this.newTodo);
   }
 
   getTodos() {
@@ -59,10 +44,6 @@ export class AppComponent {
     }, (error) => {
       this.loading = false;
       this.error = error;
-    }, () => {
-      this.newTodoForm.patchValue({
-        title: ''
-      })
     });
   }
 

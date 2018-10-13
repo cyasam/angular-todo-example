@@ -1,28 +1,14 @@
-<h1>Todo List</h1>
+<div class="container">
+  <h3>Todo List</h3>
 
-<div *ngIf="loading">Loading</div>
+  <app-todo-form (addTodo)="addTodo($event)"></app-todo-form>
 
-<ng-template [ngIf]="!loading">
-  <div class="error-box" *ngIf="error">
+  <div *ngIf="loading"><img src="../assets/images/double-ring.svg" width="50" height="50" alt="Loading" /></div>
+
+  <app-todo-list [todos]="todos" [loading]="loading" [error]="error" (updateTodo)="updateTodo($event)" (deleteTodo)="deleteTodo($event)"></app-todo-list>
+
+  <div class="error-box" *ngIf="!loading && error">
     <p>{{error | json}}</p>
-    <button *ngIf="error?.status === 0" (click)="reloadList()">Reload</button>
+    <button *ngIf="error?.status < 200" (click)="reloadList()">Reload</button>
   </div>
-
-  <form class="new-todo-form" (submit)="handleSubmit()" [formGroup]="newTodoForm">
-    <input type="text" formControlName="title" name="newTodo" />
-    <button type="submit">Add</button>
-  </form>
-
-  <ul class="todo-list" *ngIf="todos.length">
-    <li *ngFor="let todo of todos">
-      <input type="checkbox" [checked]="todo.completed" (input)="updateTodo(todo)" />
-      {{ todo.title }}
-      <button (click)="deleteTodo(todo)">Delete</button>
-    </li>
-  </ul>
-
-  <div *ngIf="!todos.length">
-    No todos found...
-  </div>
-
-</ng-template>
+</div>

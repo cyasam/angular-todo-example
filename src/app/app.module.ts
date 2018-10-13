@@ -5,10 +5,14 @@ import { ReactiveFormsModule }   from '@angular/forms';
 import { TodoService } from './services/todo.service';
 
 import { AppComponent } from './app.component';
+import { TodoListComponent } from './components/todo/todo-list/todo-list.component';
+import { TodoFormComponent } from './components/todo/todo-form/todo-form.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    TodoListComponent,
+    TodoFormComponent
   ],
   imports: [
     BrowserModule,
