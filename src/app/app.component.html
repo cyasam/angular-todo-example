@@ -5,8 +5,8 @@
 
   <app-todo-list [todos]="todos" [loading]="loading" [error]="error" (updateTodo)="updateTodo($event)" (deleteTodo)="deleteTodo($event)"></app-todo-list>
 
-  <div class="error-box" *ngIf="!loading && error">
+  <div class="error-box alert alert-danger" role="alert" *ngIf="!loading && error">
     <p>{{error.message}}</p>
-    <button *ngIf="error?.status < 200" (click)="reloadList()">Reload</button>
+    <button class="btn btn-primary btn-sm" *ngIf="error?.status < 200" (click)="reloadList()">Reload</button>
   </div>
 </div>
