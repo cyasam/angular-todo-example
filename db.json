@@ -2,13 +2,15 @@
   "todos": [
     {
       "id": 1,
-      "title": "Todo 112",
-      "completed": true
+      "title": "Todo 1122",
+      "completed": true,
+      "openEditForm": false
     },
     {
       "id": 2,
       "title": "deneme 23",
-      "completed": true
+      "completed": false,
+      "openEditForm": false
     },
     {
       "id": 5,
