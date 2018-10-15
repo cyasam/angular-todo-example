@@ -7,12 +7,14 @@ import { TodoService } from './services/todo.service';
 import { AppComponent } from './app.component';
 import { TodoListComponent } from './components/todo/todo-list/todo-list.component';
 import { TodoFormComponent } from './components/todo/todo-form/todo-form.component';
+import { TodoEditFormComponent } from './components/todo/todo-edit-form/todo-edit-form.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     TodoListComponent,
-    TodoFormComponent
+    TodoFormComponent,
+    TodoEditFormComponent
   ],
   imports: [
     BrowserModule,

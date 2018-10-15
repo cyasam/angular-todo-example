@@ -2,17 +2,14 @@
 
 <ng-template [ngIf]="!loading && !error">
   <ul class="todo-list list-group" *ngIf="todos.length">
-    <li class="list-group-item" *ngFor="let todo of todos">
+    <li class="list-group-item" *ngFor="let todo of todos; let index = i">
       <div class="todo-info">
         <label for="todo-{{todo.id}}">
-          <input id="todo-{{todo.id}}" type="checkbox" class="checkbox mr-3" [checked]="todo.completed" (input)="handleUpdateTodo(todo)" />
+          <input id="todo-{{todo.id}}" type="checkbox" class="checkbox mr-3" [checked]="todo.completed" (input)="checkTodo(todo)" />
           <span *ngIf="!openEditForm">{{ todo.title }}</span>
         </label>
 
-        <form class="edit-form form-inline" *ngIf="openEditForm" (submit)="handleEditTodo(todo)" [formGroup]="todoForm">
-          <input type="text" class="form-control form-control-sm mr-3" formControlName="title" [value]="todo.title" />
-          <button type="submit" class="btn btn-primary btn-sm">Edit</button>
-        </form>
+        <app-todo-edit-form [todo]="todo" (editTodo)="editTodo($event)" *ngIf="openEditForm"></app-todo-edit-form>
       </div>
 
       <div class="button">

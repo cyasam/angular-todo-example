@@ -1,0 +1,4 @@
+<form class="edit-form form-inline" (submit)="handleEditTodo()" [formGroup]="todoForm">
+  <input type="text" class="form-control form-control-sm mr-3" formControlName="title" [value]="todo.title" />
+  <button type="submit" class="btn btn-primary btn-sm">Edit</button>
+</form>

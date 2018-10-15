@@ -49,7 +49,6 @@ export class AppComponent {
 
   updateTodo(updatedTodo): void {
     this.loading = true;
-    updatedTodo.completed = !updatedTodo.completed;
     this.todoService.updateTodo(updatedTodo).subscribe(
       (result: TodoModel) => {
         this.loading = false;

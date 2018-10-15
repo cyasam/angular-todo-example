@@ -1,5 +1,4 @@
-import { FormGroup, FormBuilder } from '@angular/forms';
-import { Component, Input, Output, EventEmitter, OnInit } from '@angular/core';
+import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { TodoModel } from '../../../models/todo.interface';
 
 @Component({
@@ -7,7 +6,7 @@ import { TodoModel } from '../../../models/todo.interface';
   templateUrl: './todo-list.component.html',
   styleUrls: ['./todo-list.component.scss']
 })
-export class TodoListComponent implements OnInit {
+export class TodoListComponent {
 
   @Input() todos: TodoModel[];
   @Input() loading: boolean;
@@ -16,26 +15,20 @@ export class TodoListComponent implements OnInit {
   @Output() updateTodo: EventEmitter<TodoModel> = new EventEmitter();
   @Output() deleteTodo: EventEmitter<TodoModel> = new EventEmitter();
 
-  todoForm: FormGroup = this.fb.group({
-    title: this.todos
-  });
   openEditForm: boolean = false;
 
-  constructor(private fb: FormBuilder){}
-
-  ngOnInit(): void {
-    console.log(this.todoForm)
-    this.todoForm.statusChanges.subscribe(value => {
-      console.log(value);
-    })
-  }
+  constructor(){}
 
   handleUpdateTodo(todo) {
     this.updateTodo.emit(todo);
   }
 
-  handleEditTodo(todo){
-    todo.title = this.todoForm.value.title;
+  checkTodo(todo){
+    todo.completed = !todo.completed;
+    this.handleUpdateTodo(todo);
+  }
+
+  editTodo(todo){
     this.handleUpdateTodo(todo);
     this.toggleEditTodo();
   }
