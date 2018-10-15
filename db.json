@@ -2,12 +2,17 @@
   "todos": [
     {
       "id": 3,
-      "title": "deneme 3",
+      "title": "deneme",
       "completed": false
     },
     {
       "id": 5,
-      "title": "et pişir",
+      "title": "deneme2",
+      "completed": true
+    },
+    {
+      "id": 6,
+      "title": "deneme 3",
       "completed": false
     }
   ]

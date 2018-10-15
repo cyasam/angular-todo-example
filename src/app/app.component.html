@@ -3,12 +3,10 @@
 
   <app-todo-form (addTodo)="addTodo($event)"></app-todo-form>
 
-  <div *ngIf="loading"><img src="../assets/images/double-ring.svg" width="50" height="50" alt="Loading" /></div>
-
   <app-todo-list [todos]="todos" [loading]="loading" [error]="error" (updateTodo)="updateTodo($event)" (deleteTodo)="deleteTodo($event)"></app-todo-list>
 
   <div class="error-box" *ngIf="!loading && error">
-    <p>{{error | json}}</p>
+    <p>{{error.message}}</p>
     <button *ngIf="error?.status < 200" (click)="reloadList()">Reload</button>
   </div>
 </div>
