@@ -3,12 +3,17 @@
     {
       "id": 1,
       "title": "Todo 112",
-      "completed": false
+      "completed": true
     },
     {
       "id": 2,
       "title": "deneme 23",
       "completed": true
+    },
+    {
+      "id": 5,
+      "title": "selam selam",
+      "completed": false
     }
   ]
 }
