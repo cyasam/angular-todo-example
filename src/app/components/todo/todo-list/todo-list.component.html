@@ -2,18 +2,18 @@
 
 <ng-template [ngIf]="!loading && !error">
   <ul class="todo-list list-group" *ngIf="todos.length">
-    <li class="list-group-item" *ngFor="let todo of todos; let index = i">
+    <li class="list-group-item" *ngFor="let todo of todos">
       <div class="todo-info">
         <label for="todo-{{todo.id}}">
-          <input id="todo-{{todo.id}}" type="checkbox" class="checkbox mr-3" [checked]="todo.completed" (input)="checkTodo(todo)" />
-          <span *ngIf="!openEditForm">{{ todo.title }}</span>
+          <input id="todo-{{todo.id}}" type="checkbox" class="checkbox mr-3" [checked]="todo.completed" (change)="checkTodo(todo)" />
+          <span *ngIf="!todo.openEditForm">{{ todo.title }}</span>
         </label>
 
-        <app-todo-edit-form [todo]="todo" (editTodo)="editTodo($event)" *ngIf="openEditForm"></app-todo-edit-form>
+        <app-todo-edit-form [todo]="todo" (editTodo)="editTodo($event)" *ngIf="todo.openEditForm"></app-todo-edit-form>
       </div>
 
       <div class="button">
-        <button class="btn btn-primary btn-sm" (click)="toggleEditTodo()">{{!openEditForm ? 'Edit' : 'Close'}}</button>
+        <button class="btn btn-primary btn-sm mr-3" (click)="toggleEditTodo(todo)">{{!todo.openEditForm ? 'Edit' : 'Close'}}</button>
         <button class="btn btn-primary btn-sm" (click)="handleDeleteTodo(todo)">Delete</button>
       </div>
     </li>

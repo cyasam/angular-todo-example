@@ -1,4 +1,4 @@
-import { Component, Input, Output, EventEmitter } from '@angular/core';
+import { Component, Input, Output, EventEmitter, OnInit } from '@angular/core';
 import { TodoModel } from '../../../models/todo.interface';
 
 @Component({
@@ -6,7 +6,7 @@ import { TodoModel } from '../../../models/todo.interface';
   templateUrl: './todo-list.component.html',
   styleUrls: ['./todo-list.component.scss']
 })
-export class TodoListComponent {
+export class TodoListComponent implements OnInit {
 
   @Input() todos: TodoModel[];
   @Input() loading: boolean;
@@ -15,9 +15,13 @@ export class TodoListComponent {
   @Output() updateTodo: EventEmitter<TodoModel> = new EventEmitter();
   @Output() deleteTodo: EventEmitter<TodoModel> = new EventEmitter();
 
-  openEditForm: boolean = false;
+  openEditForm: boolean[] = [];
 
   constructor(){}
+
+  ngOnInit() {
+    this.todos.map(todo => todo.openEditForm = false);
+  }
 
   handleUpdateTodo(todo) {
     this.updateTodo.emit(todo);
@@ -29,12 +33,16 @@ export class TodoListComponent {
   }
 
   editTodo(todo){
+    this.removeOpenEditFormPorperty(todo)
     this.handleUpdateTodo(todo);
-    this.toggleEditTodo();
   }
 
-  toggleEditTodo(){
-    this.openEditForm = !this.openEditForm;
+  toggleEditTodo(todo){
+    todo.openEditForm = !todo.openEditForm;
+  }
+
+  removeOpenEditFormPorperty(todo){
+    delete todo.openEditForm
   }
   
   handleDeleteTodo(todo) {
