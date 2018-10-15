@@ -14,7 +14,7 @@
 
       <div class="button">
         <button class="btn btn-secondary btn-sm mr-3" (click)="toggleEditTodo(todo)">{{!todo.openEditForm ? 'Edit' : 'Close'}}</button>
-        <button class="btn btn-danger btn-sm" (click)="handleDeleteTodo(todo)">Delete</button>
+        <button class="btn btn-danger btn-sm" (click)="openModal(todo)">Delete</button>
       </div>
     </li>
   </ul>
@@ -23,3 +23,5 @@
     No todos found...
   </div>
 </ng-template>
+
+<app-modal-dialog [isOpenModal]="isOpenModal" [todo]="deletingTodo" (closeModal)="closeModal($event)"></app-modal-dialog>

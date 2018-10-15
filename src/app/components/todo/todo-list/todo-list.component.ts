@@ -16,6 +16,8 @@ export class TodoListComponent implements OnInit {
   @Output() deleteTodo: EventEmitter<TodoModel> = new EventEmitter();
 
   openEditForm: boolean[] = [];
+  isOpenModal: boolean = false;
+  deletingTodo: TodoModel;
 
   constructor(){}
 
@@ -43,6 +45,19 @@ export class TodoListComponent implements OnInit {
 
   removeOpenEditFormPorperty(todo){
     delete todo.openEditForm
+  }
+
+  openModal(todo){
+    this.deletingTodo = todo;
+    this.isOpenModal = true;
+  }
+
+  closeModal(todo){
+    this.isOpenModal = false;
+
+    if (todo) {
+      this.handleDeleteTodo(todo);
+    }
   }
   
   handleDeleteTodo(todo) {

@@ -8,13 +8,15 @@ import { AppComponent } from './app.component';
 import { TodoListComponent } from './components/todo/todo-list/todo-list.component';
 import { TodoFormComponent } from './components/todo/todo-form/todo-form.component';
 import { TodoEditFormComponent } from './components/todo/todo-edit-form/todo-edit-form.component';
+import { ModalDialogComponent } from './components/modal-dialog/modal-dialog.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     TodoListComponent,
     TodoFormComponent,
-    TodoEditFormComponent
+    TodoEditFormComponent,
+    ModalDialogComponent
   ],
   imports: [
     BrowserModule,
