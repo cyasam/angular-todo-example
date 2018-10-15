@@ -1,5 +1,13 @@
-import { Component, Input, OnInit, Output, EventEmitter, ViewChild, ElementRef } from "@angular/core";
-import { FormBuilder, FormGroup } from "@angular/forms";
+import {
+  Component,
+  Input,
+  OnInit,
+  Output,
+  EventEmitter,
+  ViewChild,
+  ElementRef
+} from "@angular/core";
+import { FormBuilder, FormGroup, Validators } from "@angular/forms";
 import { TodoModel } from "../../../models/todo.interface";
 
 @Component({
@@ -17,22 +25,25 @@ export class TodoEditFormComponent implements OnInit {
   editTodo: EventEmitter<any> = new EventEmitter();
   @Output()
   toggleEditTodo: EventEmitter<any> = new EventEmitter();
-  
-  @ViewChild('editInput') editInput: ElementRef;
+
+  @ViewChild("editInput")
+  editInput: ElementRef;
 
   todoForm: FormGroup;
   constructor(private fb: FormBuilder) {}
 
   ngOnInit() {
     this.todoForm = this.fb.group({
-      title: this.todo.title
+      title: [this.todo.title, Validators.required]
     });
     this.editInput.nativeElement.focus();
   }
 
-  handleEditTodo(){
-    this.todo.title = this.todoForm.value.title;
-    this.editTodo.emit(this.todo);
+  handleEditTodo() {
+    if (this.todoForm.valid) {
+      this.todo.title = this.todoForm.value.title;
+      this.editTodo.emit(this.todo);
+    }
   }
 
   handleToggleEditTodo(todo) {
