@@ -40,7 +40,7 @@ export class TodoEditFormComponent implements OnInit {
   }
 
   handleEditTodo() {
-    if (this.todoForm.valid) {
+    if (this.todoForm.valid && this.todoForm.dirty) {
       this.todo.title = this.todoForm.value.title;
       this.editTodo.emit(this.todo);
     }
