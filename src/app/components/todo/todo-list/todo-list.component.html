@@ -1,4 +1,4 @@
-<div *ngIf="loading"><img src="../assets/images/double-ring.svg" width="50" height="50" alt="Loading" /></div>
+<div [hidden]="!loading"><img src="../assets/images/double-ring.svg" width="50" height="50" alt="Loading" /></div>
 
 <ng-template [ngIf]="!loading && !error">
   <ul class="todo-list list-group" *ngIf="todos.length">
@@ -11,3 +11,5 @@
     No todos found...
   </div>
 </ng-template>
+
+<app-modal-dialog [isOpenModal]="isOpenModal" [todo]="deletingTodo" (closeModal)="closeModal($event)"></app-modal-dialog>

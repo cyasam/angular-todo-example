@@ -11,6 +11,7 @@ import { TodoListComponent } from './components/todo/todo-list/todo-list.compone
 import { TodoFormComponent } from './components/todo/todo-form/todo-form.component';
 import { TodoEditFormComponent } from './components/todo/todo-edit-form/todo-edit-form.component';
 import { TodoListItemComponent } from './components/todo/todo-list-item/todo-list-item.component';
+import { ModalDialogComponent } from './components/modal-dialog/modal-dialog.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import { TodoListItemComponent } from './components/todo/todo-list-item/todo-lis
     TodoListComponent,
     TodoFormComponent,
     TodoEditFormComponent,
-    TodoListItemComponent
+    TodoListItemComponent,
+    ModalDialogComponent
   ],
   imports: [
     BrowserModule,
