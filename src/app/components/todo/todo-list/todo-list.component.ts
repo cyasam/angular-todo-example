@@ -8,6 +8,8 @@ import { TodoModel } from '../../../models/todo.interface';
 })
 export class TodoListComponent implements OnInit {
 
+  showItem: boolean = false;
+
   @Input() todos: TodoModel[];
   @Input() loading: boolean;
   @Input() error: Object;
