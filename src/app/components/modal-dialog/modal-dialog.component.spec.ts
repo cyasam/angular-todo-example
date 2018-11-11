@@ -8,9 +8,8 @@ describe('ModalDialogComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ ModalDialogComponent ]
-    })
-    .compileComponents();
+      declarations: [ModalDialogComponent]
+    }).compileComponents();
   }));
 
   beforeEach(() => {

@@ -7,7 +7,6 @@ import { TodoModel } from '../../../models/todo.interface';
   styleUrls: ['./todo-list.component.scss']
 })
 export class TodoListComponent implements OnInit {
-
   @Input() todos: TodoModel[];
   @Input() loading: boolean;
   @Input() error: Object;
@@ -19,47 +18,47 @@ export class TodoListComponent implements OnInit {
   isOpenModal: boolean = false;
   deletingTodo: TodoModel;
 
-  constructor(){}
+  constructor() {}
 
   ngOnInit() {
-    this.todos.map(todo => todo.openEditForm = false);
+    this.todos.map(todo => (todo.openEditForm = false));
   }
 
   handleUpdateTodo(todo) {
     this.updateTodo.emit(todo);
   }
 
-  checkTodo(todo){
+  checkTodo(todo) {
     todo.completed = !todo.completed;
     this.handleUpdateTodo(todo);
   }
 
-  editTodo(todo){
-    this.removeOpenEditFormPorperty(todo)
+  editTodo(todo) {
+    this.removeOpenEditFormPorperty(todo);
     this.handleUpdateTodo(todo);
   }
 
-  toggleEditTodo(todo){
+  toggleEditTodo(todo) {
     todo.openEditForm = !todo.openEditForm;
   }
 
-  removeOpenEditFormPorperty(todo){
-    delete todo.openEditForm
+  removeOpenEditFormPorperty(todo) {
+    delete todo.openEditForm;
   }
 
-  openModal(todo){
+  openModal(todo) {
     this.deletingTodo = todo;
     this.isOpenModal = true;
   }
 
-  closeModal(todo){
+  closeModal(todo) {
     this.isOpenModal = false;
 
     if (todo) {
       this.handleDeleteTodo(todo);
     }
   }
-  
+
   handleDeleteTodo(todo) {
     this.deleteTodo.emit(todo);
   }

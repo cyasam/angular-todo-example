@@ -1,7 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
-import { ReactiveFormsModule }   from '@angular/forms';
+import { ReactiveFormsModule } from '@angular/forms';
 import { TodoService } from './services/todo.service';
 
 import { AppComponent } from './app.component';
@@ -18,12 +18,8 @@ import { ModalDialogComponent } from './components/modal-dialog/modal-dialog.com
     TodoEditFormComponent,
     ModalDialogComponent
   ],
-  imports: [
-    BrowserModule,
-    HttpClientModule,
-    ReactiveFormsModule
-  ],
+  imports: [BrowserModule, HttpClientModule, ReactiveFormsModule],
   providers: [TodoService],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {}

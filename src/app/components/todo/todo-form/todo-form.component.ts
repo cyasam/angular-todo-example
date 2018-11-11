@@ -1,12 +1,12 @@
-import { Validators } from "@angular/forms";
-import { Component, Input, Output, EventEmitter } from "@angular/core";
-import { FormBuilder, FormGroup } from "@angular/forms";
-import { TodoModel } from "../../../models/todo.interface";
+import { Validators } from '@angular/forms';
+import { Component, Input, Output, EventEmitter } from '@angular/core';
+import { FormBuilder, FormGroup } from '@angular/forms';
+import { TodoModel } from '../../../models/todo.interface';
 
 @Component({
-  selector: "app-todo-form",
-  templateUrl: "./todo-form.component.html",
-  styleUrls: ["./todo-form.component.scss"]
+  selector: 'app-todo-form',
+  templateUrl: './todo-form.component.html',
+  styleUrls: ['./todo-form.component.scss']
 })
 export class TodoFormComponent {
   @Output()
@@ -14,12 +14,12 @@ export class TodoFormComponent {
 
   newTodo: TodoModel = {
     id: null,
-    title: "",
+    title: '',
     completed: false
   };
 
   newTodoForm: FormGroup = this.fb.group({
-    title: ["", Validators.required]
+    title: ['', Validators.required]
   });
 
   submitted: boolean = false;
@@ -37,7 +37,7 @@ export class TodoFormComponent {
   }
 
   resetForm() {
-    this.newTodoForm.reset({title: ''})
+    this.newTodoForm.reset({ title: '' });
     this.submitted = false;
   }
 }

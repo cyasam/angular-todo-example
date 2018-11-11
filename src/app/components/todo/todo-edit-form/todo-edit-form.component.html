@@ -1,4 +1,5 @@
 <form class="edit-form form-inline" (submit)="handleEditTodo()" [formGroup]="todoForm" novalidate>
-  <input type="text" class="form-control form-control-sm mr-3" [ngClass]="{'is-invalid': todoForm.invalid}" #editInput (keyup.esc)="handleToggleEditTodo(todo)" formControlName="title" [value]="todo.title" required />
+  <input type="text" class="form-control form-control-sm mr-3" [ngClass]="{'is-invalid': todoForm.invalid}" #editInput
+    (keyup.esc)="handleToggleEditTodo(todo)" formControlName="title" [value]="todo.title" required />
   <button type="submit" class="btn btn-secondary btn-sm">Edit</button>
 </form>
