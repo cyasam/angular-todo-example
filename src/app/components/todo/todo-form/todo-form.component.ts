@@ -22,7 +22,7 @@ export class TodoFormComponent {
     title: ['', Validators.required]
   });
 
-  submitted: boolean = false;
+  submitted = false;
 
   constructor(private fb: FormBuilder) {}
 

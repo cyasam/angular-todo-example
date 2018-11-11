@@ -15,7 +15,7 @@ export class TodoListComponent implements OnInit {
   @Output() deleteTodo: EventEmitter<TodoModel> = new EventEmitter();
 
   openEditForm: boolean[] = [];
-  isOpenModal: boolean = false;
+  isOpenModal = false;
   deletingTodo: TodoModel;
 
   constructor() {}

@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { TodoService } from './services/todo.service';
 import { TodoModel } from './models/todo.interface';
 
@@ -7,11 +7,11 @@ import { TodoModel } from './models/todo.interface';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
   title = 'app';
   error: Object;
   todos: TodoModel[] = [];
-  loading: boolean = false;
+  loading = false;
 
   constructor(private todoService: TodoService) {}
 
