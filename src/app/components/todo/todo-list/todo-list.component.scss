@@ -1,0 +1,16 @@
+.todo-list {
+  .item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  label {
+    margin-bottom: 0;
+  }
+
+  .todo-info {
+    display: flex;
+    align-items: center;
+  }
+}

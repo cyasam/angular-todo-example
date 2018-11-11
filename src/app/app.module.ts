@@ -3,7 +3,6 @@ import { NgModule } from '@angular/core';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule } from '@angular/common/http';
 import { ReactiveFormsModule } from '@angular/forms';
-
 import { TodoService } from './services/todo.service';
 
 import { AppComponent } from './app.component';
@@ -31,4 +30,4 @@ import { ModalDialogComponent } from './components/modal-dialog/modal-dialog.com
   providers: [TodoService],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {}

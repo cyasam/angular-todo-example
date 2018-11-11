@@ -6,14 +6,14 @@ import {
   EventEmitter,
   ViewChild,
   ElementRef
-} from "@angular/core";
-import { FormBuilder, FormGroup, Validators } from "@angular/forms";
-import { TodoModel } from "../../../models/todo.interface";
+} from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { TodoModel } from '../../../models/todo.interface';
 
 @Component({
-  selector: "app-todo-edit-form",
-  templateUrl: "./todo-edit-form.component.html",
-  styleUrls: ["./todo-edit-form.component.scss"]
+  selector: 'app-todo-edit-form',
+  templateUrl: './todo-edit-form.component.html',
+  styleUrls: ['./todo-edit-form.component.scss']
 })
 export class TodoEditFormComponent implements OnInit {
   @Input()
@@ -26,7 +26,7 @@ export class TodoEditFormComponent implements OnInit {
   @Output()
   toggleEditTodo: EventEmitter<any> = new EventEmitter();
 
-  @ViewChild("editInput")
+  @ViewChild('editInput')
   editInput: ElementRef;
 
   todoForm: FormGroup;

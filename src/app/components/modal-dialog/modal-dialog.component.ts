@@ -7,7 +7,6 @@ import { TodoModel } from './../../models/todo.interface';
   styleUrls: ['./modal-dialog.component.scss']
 })
 export class ModalDialogComponent implements OnInit {
-
   @Input()
   isOpenModal: boolean;
   @Input()
@@ -15,17 +14,16 @@ export class ModalDialogComponent implements OnInit {
 
   @Output()
   closeModal: EventEmitter<any> = new EventEmitter();
-  
-  constructor() { }
 
-  ngOnInit() {
-  }
+  constructor() {}
 
-  handleClose(){
+  ngOnInit() {}
+
+  handleClose() {
     this.closeModal.emit();
   }
 
-  handleDelete(todo){
+  handleDelete(todo) {
     this.closeModal.emit(todo);
   }
 }

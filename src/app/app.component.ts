@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { TodoService } from './services/todo.service';
 import { TodoModel } from './models/todo.interface';
 
@@ -7,13 +7,13 @@ import { TodoModel } from './models/todo.interface';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
   title = 'app';
   error: Object;
   todos: TodoModel[] = [];
-  loading: boolean = false;
+  loading = false;
 
-  constructor(private todoService: TodoService){}
+  constructor(private todoService: TodoService) {}
 
   ngOnInit(): void {
     this.getTodos();
@@ -25,26 +25,32 @@ export class AppComponent {
 
   getTodos() {
     this.loading = true;
-    this.todoService.getTodos().subscribe((todos: TodoModel[]) => {
-      this.loading = false;
-      this.error = null;
-      this.todos = todos;
-    }, (error) => {
-      this.loading = false;
-      this.error = error;
-    });
+    this.todoService.getTodos().subscribe(
+      (todos: TodoModel[]) => {
+        this.loading = false;
+        this.error = null;
+        this.todos = todos;
+      },
+      error => {
+        this.loading = false;
+        this.error = error;
+      }
+    );
   }
 
   addTodo(addedTodo) {
     this.loading = true;
-    return this.todoService.addTodo(addedTodo).subscribe((todo: TodoModel) => {
-      this.loading = false;
-      this.error = null;
-      this.todos = [ ...this.todos, todo ];
-    }, (error) => {
-      this.loading = false;
-      this.error = error;
-    });
+    return this.todoService.addTodo(addedTodo).subscribe(
+      (todo: TodoModel) => {
+        this.loading = false;
+        this.error = null;
+        this.todos = [...this.todos, todo];
+      },
+      error => {
+        this.loading = false;
+        this.error = error;
+      }
+    );
   }
 
   updateTodo(updatedTodo): void {
@@ -53,14 +59,15 @@ export class AppComponent {
       (result: TodoModel) => {
         this.loading = false;
         this.error = null;
-        this.todos = this.todos.map((todo) => {
-          if(result.id === todo.id) {
+        this.todos = this.todos.map(todo => {
+          if (result.id === todo.id) {
             todo = updatedTodo;
           }
 
           return todo;
-        })
-      }, (error) => {
+        });
+      },
+      error => {
         this.loading = false;
         this.error = error;
       }
@@ -73,8 +80,9 @@ export class AppComponent {
       () => {
         this.loading = false;
         this.error = null;
-        this.todos = this.todos.filter((todo) => todo.id !== deletedTodo.id);
-      }, (error) => {
+        this.todos = this.todos.filter(todo => todo.id !== deletedTodo.id);
+      },
+      error => {
         this.loading = false;
         this.error = error;
       }
